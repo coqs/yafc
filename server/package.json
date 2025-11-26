@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "extract-zip": "^2.0.1",
+    "mkdirp": "^3.0.1",
+    "yauzl": "^3.2.0"
+  }
+}
