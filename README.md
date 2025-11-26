@@ -4,13 +4,13 @@ A powerful file management tool with session-based cleaning, allowing you to eff
 
 ## Features
 
-- 🗂️ **Session management** - Create, load, and delete cleaning sessions
-- 📁 **File system navigation** - Browse through files and folders
-- ⌨️ **Keyboard shortcuts** - Quick file operations with K (keep) and D (delete)
-- 📊 **Completion statistics** - Track deleted files, kept files, and space freed
-- 🔄 **Resume support** - Pick up where you left off with automatic session resume
-- 🗑️ **Directory deletion** - Delete both files and entire folders
-- 🎯 **Auto-refresh dashboard** - Live session list updates
+- **Session management** - Create, load, and delete cleaning sessions
+- **File system navigation** - Browse through files and folders
+- **Keyboard shortcuts** - Quick file operations with K (keep) and D (delete)
+- **Completion statistics** - Track deleted files, kept files, and space freed
+- **Resume support** - Pick up where you left off with automatic session resume
+- **Directory deletion** - Delete both files and entire folders
+- **Auto-refresh dashboard** - Live session list updates
 
 ## Installation
 
