@@ -230,7 +230,8 @@ export default function App() {
   // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (!files.length) return;
+      // Disable shortcuts when not in cleaning state or no files
+      if (appState !== "cleaning" || !files.length) return;
 
       switch (e.key.toLowerCase()) {
         case 'k':
@@ -246,52 +247,54 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [files, handleKeep, handleDelete]);
+  }, [appState, files, handleKeep, handleDelete]);
 
   return (
-    <div className="h-screen bg-black text-white font-mono flex flex-col overflow-hidden">
+    <div className="h-screen bg-nord0 text-nord6 font-mono flex flex-col overflow-hidden">
       {appState === "completed" ? (
         // Completion Screen
         <div className="flex flex-col h-full items-center justify-center px-6">
           <div className="text-center max-w-2xl">
             {/* Trophy Icon */}
             <div className="mb-6 flex justify-center">
-              <Trophy className="w-24 h-24 text-yellow-400 animate-bounce" />
+              <Trophy className="w-24 h-24 text-nord13 animate-bounce" />
             </div>
 
             {/* Congratulations Message */}
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-nord8 to-nord9 bg-clip-text text-transparent">
               Congratulations!
             </h1>
-            <p className="text-2xl text-gray-300 mb-8">You've cleaned your files</p>
+            <p className="text-xl text-nord5 mb-8">
+              You've cleaned your files
+            </p>
 
-            {/* Statistics */}
+            {/* Stats */}
             {completionStats && (
-              <div className="bg-gray-900 border-2 border-orange-500 rounded-lg p-8 mb-8">
-                <div className="grid grid-cols-3 gap-6 mb-6">
+              <div className="bg-nord1 border border-nord2 rounded-lg p-8 mb-8">
+                <div className="grid grid-cols-3 gap-8 mb-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-red-400 mb-2">
+                    <div className="text-4xl font-bold text-nord11 mb-2">
                       {completionStats.totalDeleted}
                     </div>
-                    <p className="text-gray-400">Files Deleted</p>
+                    <p className="text-nord4">Files Deleted</p>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-green-400 mb-2">
+                    <div className="text-4xl font-bold text-nord14 mb-2">
                       {completionStats.totalKept}
                     </div>
-                    <p className="text-gray-400">Files Kept</p>
+                    <p className="text-nord4">Files Kept</p>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-yellow-400 mb-2">
+                    <div className="text-4xl font-bold text-nord13 mb-2">
                       {completionStats.formattedSize}
                     </div>
-                    <p className="text-gray-400">Space Freed</p>
+                    <p className="text-nord4">Space Freed</p>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-700 pt-4">
-                  <p className="text-gray-400 text-sm">
-                    Total Files Processed: <span className="text-white font-semibold">{completionStats.totalDeleted + completionStats.totalKept}</span>
+                <div className="border-t border-nord2 pt-4">
+                  <p className="text-nord4 text-sm">
+                    Total Files Processed: <span className="text-nord6 font-semibold">{completionStats.totalDeleted + completionStats.totalKept}</span>
                   </p>
                 </div>
               </div>
@@ -301,7 +304,7 @@ export default function App() {
             <div className="flex gap-4 justify-center">
               <button
                 onClick={handleBackToSessions}
-                className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded font-medium transition-colors duration-300 flex items-center gap-2"
+                className="px-8 py-3 bg-nord8 hover:bg-nord9 text-nord0 rounded font-medium transition-colors duration-300 flex items-center gap-2"
               >
                 <RotateCcw className="w-5 h-5" />
                 Back to Home
@@ -313,11 +316,11 @@ export default function App() {
         // Session Selection Screen
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="px-6 py-6 border-b border-gray-700 flex-shrink-0">
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          <div className="px-6 py-6 border-b border-nord2 flex-shrink-0">
+            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-nord8 to-nord9 bg-clip-text text-transparent">
               YAFC
             </h1>
-            <p className="text-gray-400 text-sm">Yet Another File Cleaner</p>
+            <p className="text-nord4 text-sm">Yet Another File Cleaner</p>
           </div>
 
           {/* Content */}
@@ -325,8 +328,8 @@ export default function App() {
             <div className="max-w-4xl mx-auto">
               {/* Create New Session */}
               <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-orange-400">Create New Session</h2>
-                <div className="bg-gray-900 border border-gray-700 rounded p-6">
+                <h2 className="text-2xl font-bold mb-4 text-nord8">Create New Session</h2>
+                <div className="bg-nord1 border border-nord2 rounded p-6">
                   <div className="flex gap-3">
                     <div className="flex-1">
                       <input
@@ -334,7 +337,7 @@ export default function App() {
                         value={newFolderPath}
                         onChange={(e) => setNewFolderPath(e.target.value)}
                         placeholder="Enter folder path to clean..."
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-sm"
+                        className="w-full px-4 py-3 bg-nord2 border border-nord3 rounded text-nord6 placeholder-nord4 focus:outline-none focus:border-nord8 focus:ring-1 focus:ring-nord8 transition-colors text-sm"
                         onKeyDown={(e) => e.key === 'Enter' && handleCreateNewSession()}
                         disabled={loading}
                       />
@@ -342,7 +345,7 @@ export default function App() {
                     <button
                       onClick={handleCreateNewSession}
                       disabled={loading}
-                      className="px-6 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-600 text-white rounded font-medium transition-colors duration-300 flex items-center gap-2 text-sm"
+                      className="px-6 py-3 bg-nord8 hover:bg-nord9 disabled:bg-nord3 text-nord0 rounded font-medium transition-colors duration-300 flex items-center gap-2 text-sm"
                     >
                       <Plus className="w-4 h-4" />
                       {loading ? "Loading..." : "Create"}
@@ -353,7 +356,7 @@ export default function App() {
 
               {/* Load Existing Sessions */}
               <div>
-                <h2 className="text-2xl font-bold mb-4 text-orange-400">
+                <h2 className="text-2xl font-bold mb-4 text-nord8">
                   Load Existing Session {sessions.length > 0 && `(${sessions.length})`}
                 </h2>
                 {sessions.length > 0 ? (
@@ -361,44 +364,44 @@ export default function App() {
                     {sessions.map((session) => (
                       <div
                         key={session.number}
-                        className="w-full bg-gray-900 border border-gray-700 hover:border-orange-500 rounded p-4 transition-all duration-300 flex items-center justify-between group"
+                        className="w-full bg-nord1 border border-nord2 hover:border-nord8 rounded p-4 transition-all duration-300 flex items-center justify-between group"
                       >
                         <button
                           onClick={() => handleLoadSession(session.number)}
                           disabled={loading}
                           className="flex-1 text-left hover:opacity-80 transition-opacity disabled:opacity-50"
                         >
-                          <div className="text-orange-400 font-semibold mb-1">
+                          <div className="text-nord8 font-semibold mb-1">
                             Session #{session.number}
                           </div>
-                          <div className="text-gray-400 text-sm mb-2">
-                            Path: <span className="text-gray-300">{session.path}</span>
+                          <div className="text-nord4 text-sm mb-2">
+                            Path: <span className="text-nord5">{session.path}</span>
                           </div>
-                          <div className="flex gap-4 text-xs text-gray-500">
-                            <span>Deleted: <span className="text-red-400">{session.deletedFiles?.length || 0}</span></span>
-                            <span>Kept: <span className="text-green-400">{session.keptFiles?.length || 0}</span></span>
+                          <div className="flex gap-4 text-xs text-nord4">
+                            <span>Deleted: <span className="text-nord11">{session.deletedFiles?.length || 0}</span></span>
+                            <span>Kept: <span className="text-nord14">{session.keptFiles?.length || 0}</span></span>
                           </div>
                         </button>
                         <div className="flex gap-2 ml-4">
-                          <Upload className="w-5 h-5 text-gray-500 group-hover:text-orange-400 transition-colors" />
+                          <Upload className="w-5 h-5 text-nord4 group-hover:text-nord8 transition-colors" />
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               handleDeleteSession(session.number);
                             }}
                             disabled={loading}
-                            className="p-1 hover:bg-red-500 rounded transition-colors disabled:opacity-50"
+                            className="p-1 hover:bg-nord11 rounded transition-colors disabled:opacity-50"
                             title="Delete session"
                           >
-                            <Trash2 className="w-5 h-5 text-gray-500 hover:text-white transition-colors" />
+                            <Trash2 className="w-5 h-5 text-nord4 hover:text-nord6 transition-colors" />
                           </button>
                         </div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-gray-900 border border-gray-700 rounded p-8 text-center">
-                    <p className="text-gray-400">No existing sessions. Create one to get started!</p>
+                  <div className="bg-nord1 border border-nord2 rounded p-8 text-center">
+                    <p className="text-nord4">No existing sessions. Create one to get started!</p>
                   </div>
                 )}
               </div>
@@ -409,17 +412,17 @@ export default function App() {
         // Cleaning Screen
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="px-6 py-6 border-b border-gray-700 flex-shrink-0">
+          <div className="px-6 py-6 border-b border-nord2 flex-shrink-0">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-nord8 to-nord9 bg-clip-text text-transparent">
                   YAFC
                 </h1>
-                <p className="text-gray-400 text-sm">Session #{sessionNumber} • {folderPath}</p>
+                <p className="text-nord4 text-sm">Session #{sessionNumber} • {folderPath}</p>
               </div>
               <button
                 onClick={handleBackToSessions}
-                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded font-medium transition-colors duration-300 text-sm"
+                className="px-4 py-2 bg-nord2 hover:bg-nord3 text-nord6 rounded font-medium transition-colors duration-300 text-sm"
               >
                 Back to Sessions
               </button>
@@ -427,17 +430,17 @@ export default function App() {
 
             {/* Keyboard Shortcuts Info */}
             {files.length > 0 && (
-              <div className="mt-3 flex items-center gap-4 text-xs text-gray-400">
+              <div className="mt-3 flex items-center gap-4 text-xs text-nord4">
                 <div className="flex items-center gap-2">
                   <Keyboard className="w-3 h-3" />
                   <span>Shortcuts:</span>
                 </div>
                 <div className="flex gap-3">
-                  <span className="px-2 py-1 bg-gray-800 border border-gray-600 rounded">
-                    <kbd className="font-bold">K</kbd> = Keep
+                  <span className="px-2 py-1 bg-nord2 border border-nord3 rounded">
+                    <kbd className="font-bold text-nord6">K</kbd> = Keep
                   </span>
-                  <span className="px-2 py-1 bg-gray-800 border border-gray-600 rounded">
-                    <kbd className="font-bold">D</kbd> = Delete
+                  <span className="px-2 py-1 bg-nord2 border border-nord3 rounded">
+                    <kbd className="font-bold text-nord6">D</kbd> = Delete
                   </span>
                 </div>
               </div>
@@ -448,21 +451,21 @@ export default function App() {
           {files.length > 0 && (
             <div className="flex-1 overflow-hidden flex flex-col px-4 py-4 gap-3">
               {/* Stats Bar */}
-              <div className="flex-shrink-0 flex justify-between items-center px-4 py-2 bg-gray-800 border border-gray-700 rounded text-xs">
+              <div className="flex-shrink-0 flex justify-between items-center px-4 py-2 bg-nord1 border border-nord2 rounded text-xs">
                 <div className="flex gap-4">
-                  <span className="text-gray-400">
-                    File <span className="text-white font-semibold">{current + 1}</span>/<span className="text-white font-semibold">{files.length}</span>
+                  <span className="text-nord4">
+                    File <span className="text-nord6 font-semibold">{current + 1}</span>/<span className="text-nord6 font-semibold">{files.length}</span>
                   </span>
-                  <span className="text-gray-600">•</span>
-                  <span className="text-gray-400">
-                    Deleted: <span className="text-red-400 font-semibold">{deleted}</span>
+                  <span className="text-nord3">•</span>
+                  <span className="text-nord4">
+                    Deleted: <span className="text-nord11 font-semibold">{deleted}</span>
                   </span>
-                  <span className="text-gray-600">•</span>
-                  <span className="text-gray-400">
-                    Remaining: <span className="text-orange-400 font-semibold">{files.length - current - 1}</span>
+                  <span className="text-nord3">•</span>
+                  <span className="text-nord4">
+                    Remaining: <span className="text-nord8 font-semibold">{files.length - current - 1}</span>
                   </span>
-                  <span className="text-gray-600">•</span>
-                  <span className="text-gray-500">
+                  <span className="text-nord3">•</span>
+                  <span className="text-nord3">
                     {Math.round(((current + 1) / files.length) * 100)}%
                   </span>
                 </div>
@@ -477,19 +480,19 @@ export default function App() {
               <div className="flex-shrink-0 flex gap-3 justify-center">
                 <button
                   onClick={handleKeep}
-                  className="group px-6 py-2 bg-gray-800 hover:bg-green-500 border-2 border-gray-600 hover:border-green-500 rounded font-medium transition-all duration-300 flex items-center gap-2 text-xs"
+                  className="group px-6 py-2 bg-nord2 hover:bg-nord14 border-2 border-nord3 hover:border-nord14 rounded font-medium transition-all duration-300 flex items-center gap-2 text-xs"
                 >
-                  <Check className="w-3 h-3 text-gray-300 group-hover:text-white transition-colors" />
-                  <span className="text-gray-300 group-hover:text-white transition-colors">Keep</span>
-                  <span className="text-xs text-gray-500 group-hover:text-green-200 transition-colors">(K)</span>
+                  <Check className="w-3 h-3 text-nord4 group-hover:text-nord0 transition-colors" />
+                  <span className="text-nord4 group-hover:text-nord0 transition-colors">Keep</span>
+                  <span className="text-xs text-nord3 group-hover:text-nord0 transition-colors">(K)</span>
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="group px-6 py-2 bg-gray-800 hover:bg-red-500 border-2 border-gray-600 hover:border-red-500 rounded font-medium transition-all duration-300 flex items-center gap-2 text-xs"
+                  className="group px-6 py-2 bg-nord2 hover:bg-nord11 border-2 border-nord3 hover:border-nord11 rounded font-medium transition-all duration-300 flex items-center gap-2 text-xs"
                 >
-                  <Trash2 className="w-3 h-3 text-gray-300 group-hover:text-white transition-colors" />
-                  <span className="text-gray-300 group-hover:text-white transition-colors">Delete</span>
-                  <span className="text-xs text-gray-500 group-hover:text-red-200 transition-colors">(D)</span>
+                  <Trash2 className="w-3 h-3 text-nord4 group-hover:text-nord0 transition-colors" />
+                  <span className="text-nord4 group-hover:text-nord0 transition-colors">Delete</span>
+                  <span className="text-xs text-nord3 group-hover:text-nord0 transition-colors">(D)</span>
                 </button>
               </div>
             </div>
@@ -498,8 +501,8 @@ export default function App() {
           {/* Empty State */}
           {files.length === 0 && (
             <div className="flex-1 flex flex-col items-center justify-center">
-              <FolderOpen className="w-16 h-16 text-gray-600 mb-4" />
-              <p className="text-gray-400">Loading files...</p>
+              <FolderOpen className="w-16 h-16 text-nord3 mb-4" />
+              <p className="text-nord4">Loading files...</p>
             </div>
           )}
         </div>

@@ -1,0 +1,145 @@
+/* Nord Color Palette */
+:root {
+  /* Polar Night */
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  
+  /* Snow Storm */
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  
+  /* Frost */
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  
+  /* Aurora */
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+}
+
+/* Theme Application */
+body {
+  background-color: var(--nord0);
+  color: var(--nord6);
+}
+
+/* Background colors */
+.bg-nord0 { background-color: var(--nord0); }
+.bg-nord1 { background-color: var(--nord1); }
+.bg-nord2 { background-color: var(--nord2); }
+.bg-nord3 { background-color: var(--nord3); }
+
+/* Text colors */
+.text-nord4 { color: var(--nord4); }
+.text-nord5 { color: var(--nord5); }
+.text-nord6 { color: var(--nord6); }
+.text-nord7 { color: var(--nord7); }
+.text-nord8 { color: var(--nord8); }
+.text-nord9 { color: var(--nord9); }
+
+/* Accent colors (Frost) */
+.text-nord10 { color: var(--nord10); }
+.text-nord11 { color: var(--nord11); }
+.text-nord12 { color: var(--nord12); }
+.text-nord13 { color: var(--nord13); }
+.text-nord14 { color: var(--nord14); }
+.text-nord15 { color: var(--nord15); }
+
+/* Border colors */
+.border-nord1 { border-color: var(--nord1); }
+.border-nord2 { border-color: var(--nord2); }
+.border-nord3 { border-color: var(--nord3); }
+.border-nord8 { border-color: var(--nord8); }
+.border-nord10 { border-color: var(--nord10); }
+
+/* Hover states */
+.hover\:bg-nord1:hover { background-color: var(--nord1); }
+.hover\:bg-nord2:hover { background-color: var(--nord2); }
+.hover\:bg-nord3:hover { background-color: var(--nord3); }
+.hover\:text-nord8:hover { color: var(--nord8); }
+.hover\:text-nord9:hover { color: var(--nord9); }
+.hover\:text-nord10:hover { color: var(--nord10); }
+.hover\:border-nord8:hover { border-color: var(--nord8); }
+.hover\:border-nord10:hover { border-color: var(--nord10); }
+
+/* Status colors */
+.text-error { color: var(--nord11); } /* Red for errors/deletions */
+.text-warning { color: var(--nord13); } /* Yellow for warnings */
+.text-success { color: var(--nord14); } /* Green for success/additions */
+.text-accent { color: var(--nord8); } /* Primary accent color */
+.text-secondary { color: var(--nord9); } /* Secondary accent color */
+
+/* Button variants */
+.btn-primary {
+  background-color: var(--nord8);
+  color: var(--nord0);
+}
+
+.btn-primary:hover {
+  background-color: var(--nord9);
+}
+
+.btn-secondary {
+  background-color: var(--nord3);
+  color: var(--nord6);
+}
+
+.btn-secondary:hover {
+  background-color: var(--nord4);
+  color: var(--nord0);
+}
+
+.btn-danger {
+  background-color: var(--nord11);
+  color: var(--nord6);
+}
+
+.btn-danger:hover {
+  background-color: #d47a85;
+}
+
+.btn-success {
+  background-color: var(--nord14);
+  color: var(--nord0);
+}
+
+.btn-success:hover {
+  background-color: #b1c992;
+}
+
+/* Gradient utilities */
+.gradient-nord {
+  background: linear-gradient(135deg, var(--nord8), var(--nord9));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.gradient-aurora {
+  background: linear-gradient(135deg, var(--nord11), var(--nord12), var(--nord13));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nord1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nord3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nord4);
+}
