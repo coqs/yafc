@@ -1,1 +1,0 @@
-"node_modules"  rm -r --cached node_modulesgit add .gitignoregit commit -m "Remove node_modules from tracking"
