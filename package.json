@@ -1,0 +1,36 @@
+{
+  "name": "yafc-main",
+  "version": "1.0.0",
+  "description": "A powerful file management tool with session-based cleaning, allowing you to efficiently organize and clean up your files while keeping track of your progress.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["file-management", "cleaning", "session-based", "Electron", "React", "Express"],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^39.2.4",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.electron.yafc-main",
+    "asar": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "server/**",
+      "frontend/dist/**"
+    ],
+    "win": {
+      "target": ["portable"]
+    }
+  }
+}

@@ -1,3 +1,10 @@
 [
-  
+  {
+    "sessionNumber": 0,
+    "path": "C:\\Users\\user\\Downloads",
+    "deletedFiles": [],
+    "keptFiles": [],
+    "filesLeft": [],
+    "lastFilePathLeftOn": ""
+  }
 ]
