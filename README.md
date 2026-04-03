@@ -1,4 +1,7 @@
 # YAFC - Yet Another File Cleaner
+## Preview
+<img width="1217" height="911" alt="image" src="https://github.com/user-attachments/assets/f11bd1a5-668d-4583-bf03-255242b40f10" />
+<img width="1217" height="911" alt="image" src="https://github.com/user-attachments/assets/33314f7a-02cb-4bff-a842-8f0de3e86e2c" />
 
 A modern file management tool with session-based cleaning, featuring a sleek dark/light mode interface and advanced file preview capabilities.
 
