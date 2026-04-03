@@ -1,0 +1,96 @@
+[
+  {
+    "sessionNumber": 0,
+    "path": "C:/Users/user/Documents/yafc testing",
+    "deletedFiles": [],
+    "keptFiles": [],
+    "filesLeft": [],
+    "lastFilePathLeftOn": ""
+  },
+  {
+    "sessionNumber": 1,
+    "path": "C:/Users/user/Pictures/HAMSTERS",
+    "deletedFiles": [],
+    "keptFiles": [
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\katex.txt",
+        "size": 0
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.55 AM (1).jpeg",
+        "size": 141988
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.55 AM.jpeg",
+        "size": 156664
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM (1).jpeg",
+        "size": 179763
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM (2).jpeg",
+        "size": 169334
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM (3).jpeg",
+        "size": 119317
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      },
+      {
+        "filePath": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg",
+        "size": 156943
+      }
+    ],
+    "filesLeft": [],
+    "lastFilePathLeftOn": "C:\\Users\\user\\Pictures\\HAMSTERS\\WhatsApp Image 2025-12-13 at 8.40.56 AM.jpeg"
+  },
+  {
+    "sessionNumber": 2,
+    "path": "C:/Users/user/Downloads",
+    "deletedFiles": [],
+    "keptFiles": [
+      {
+        "filePath": "C:\\Users\\user\\Downloads\\album_2026-01-04_02-20-06.png",
+        "size": 209305
+      }
+    ],
+    "filesLeft": [],
+    "lastFilePathLeftOn": "C:\\Users\\user\\Downloads\\answerchem.pdf"
+  }
+]
